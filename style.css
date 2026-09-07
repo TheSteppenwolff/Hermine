@@ -1,0 +1,80 @@
+:root {
+  --text-color: #243085;
+  --btn-bg: #b7c9ff;
+  --btn-text: #243085;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html, body {
+  height: 100%;
+  margin: 0;
+}
+
+body {
+  font-family: 'Quicksand', sans-serif;
+  color: var(--text-color);
+  background-color: #d6eaff;
+  transition: background-color 0.4s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  padding: 24px;
+}
+
+.card {
+  background-color: #ffffff;
+  border-radius: 24px;
+  box-shadow: 0 12px 30px rgba(36, 48, 133, 0.18);
+  padding: 36px 28px;
+  max-width: 380px;
+  width: 100%;
+  text-align: center;
+}
+
+.card__title {
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: var(--text-color);
+  margin: 0 0 18px;
+  line-height: 1.35;
+}
+
+.card__body {
+  font-size: 1rem;
+  font-weight: 500;
+  color: var(--text-color);
+  margin: 0 0 28px;
+  line-height: 1.6;
+}
+
+.card__options {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.option-btn {
+  font-family: 'Quicksand', sans-serif;
+  font-weight: 700;
+  font-size: 1rem;
+  color: var(--btn-text);
+  background-color: var(--btn-bg);
+  border: none;
+  border-radius: 14px;
+  padding: 14px 20px;
+  cursor: pointer;
+  transition: background-color 0.2s ease, color 0.2s ease, transform 0.1s ease;
+}
+
+.option-btn:active {
+  transform: scale(0.98);
+}
+
+.option-btn.is-pressed {
+  background-color: var(--btn-text);
+  color: var(--btn-bg);
+}
