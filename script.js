@@ -29,6 +29,7 @@ const scenes = {
   posta: {
     background: '#d6eaff',
     title: "C'è posta per te",
+    icon: { src: 'defilippi.png', alt: 'Maria De Filippi' },
     body: 'Sarà stato tre anni fa. Io sono ancora Maria De Filippi, tu sei ancora il destinatario. C\'era posta per te. Qualcuno ha dedicato un passo del suo libro a te, e vorrebbe leggertelo.',
     type: 'letter',
     buttonLabel: 'Leggi',

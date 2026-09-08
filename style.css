@@ -20,10 +20,11 @@ body {
   background-color: #d6eaff;
   transition: background-color 0.4s ease, color 0.4s ease;
   display: flex;
-  align-items: center;
-  justify-content: center;
+  align-items: safe center;
+  justify-content: safe center;
   min-height: 100vh;
   padding: 24px;
+  box-sizing: border-box;
 }
 
 .card {
