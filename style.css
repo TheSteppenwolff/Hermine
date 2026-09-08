@@ -3,6 +3,7 @@
   --text-color: #243085;
   --btn-bg: #b7c9ff;
   --btn-text: #243085;
+  --card-bg: #ffffff;
 }
 
 * {
@@ -17,8 +18,8 @@ html, body {
 body {
   font-family: var(--font-family);
   color: var(--text-color);
-  background-color: #d6eaff;
-  transition: background-color 0.4s ease, color 0.4s ease;
+  background: #d6eaff;
+  transition: background 0.4s ease, color 0.4s ease;
   display: flex;
   align-items: safe center;
   justify-content: safe center;
@@ -28,7 +29,7 @@ body {
 }
 
 .card {
-  background-color: #ffffff;
+  background-color: var(--card-bg);
   border-radius: 32px;
   box-shadow: 0 12px 30px rgba(36, 48, 133, 0.18);
   padding: 36px 28px;
@@ -36,7 +37,7 @@ body {
   width: 100%;
   text-align: center;
   overflow: hidden;
-  transition: height 0.35s ease;
+  transition: height 0.35s ease, background-color 0.4s ease;
 }
 
 .card__title {
@@ -106,6 +107,49 @@ body {
 .option-btn.is-incorrect {
   background-color: #ffb7b7;
   color: #000000;
+}
+
+.lyrics {
+  margin: 0 0 24px;
+}
+
+.lyrics__line {
+  font-family: var(--font-family);
+  color: var(--text-color);
+  font-size: 1rem;
+  font-weight: 700;
+  line-height: 1.5;
+  margin: 4px 0;
+}
+
+.lyrics__input {
+  font-family: var(--font-family);
+  font-size: 1rem;
+  font-weight: 700;
+  text-align: center;
+  color: var(--text-color);
+  background-color: transparent;
+  border: 2px solid var(--text-color);
+  border-radius: 999px;
+  padding: 10px 16px;
+  width: 100%;
+  margin: 8px 0;
+}
+
+.lyrics__input::placeholder {
+  color: var(--text-color);
+  opacity: 0.5;
+}
+
+@keyframes shake-x {
+  10%, 90% { transform: translateX(-3px); }
+  20%, 80% { transform: translateX(5px); }
+  30%, 50%, 70% { transform: translateX(-8px); }
+  40%, 60% { transform: translateX(8px); }
+}
+
+.shake {
+  animation: shake-x 0.5s ease;
 }
 
 .overlay {

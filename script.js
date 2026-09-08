@@ -19,8 +19,8 @@ const scenes = {
     // Nessun titolo qui: sparisce dopo Va bene/Non va e torna nella prossima scena.
     title: '',
     variants: {
-      accept: 'Questa piccola esperienza sarà un viaggio che cercherà di congiungere passato e futuro. Ci sarà musica, ci saranno date da ricordare, battute. Andiamo?',
-      decline: 'Non ti preoccupare, assolutamente. Giochiamo lo stesso. Dicevo: questa piccola esperienza sarà un viaggio che cercherà di congiungere passato e futuro. Ci sarà musica, ci saranno date da ricordare, battute. Andiamo?'
+      accept: 'Questa piccola esperienza sarà un viaggio che cercherà di congiungere passato e futuro. Ci sarà musica, ci saranno date da ricordare, brani e battute. Andiamo?',
+      decline: 'Non ti preoccupare, assolutamente. Giochiamo lo stesso. Dicevo: questa piccola esperienza sarà un viaggio che cercherà di congiungere passato e futuro. Ci sarà musica, ci saranno date da ricordare, brani e battute. Andiamo?'
     },
     type: 'choice',
     options: [
@@ -32,7 +32,7 @@ const scenes = {
     background: '#d6eaff',
     title: "C'è posta per te",
     icon: { src: 'defilippi.png', alt: 'Maria De Filippi' },
-    body: 'Sarà stato tre anni fa. Io sono ancora Maria De Filippi, tu sei ancora il destinatario. C\'era posta per te. Qualcuno ha dedicato un passo del suo libro a te, e vorrebbe leggertelo.',
+    body: 'Sarà stato tre, quasi quattro anni fa. Io sono ancora Maria De Filippi, tu sei ancora il destinatario. C\'era posta per te e c\'è tutt\'oggi. Qualcuno ha dedicato un passo del suo libro a te, e vorrebbe leggertelo.',
     type: 'letter',
     buttonLabel: 'Leggi',
     letterText: "A lungo ho pensato che le più grandi disdette delle nostre vite potessero abbatterci davvero per giorni, mesi interi. Di lasciarci incapaci di alzarsi dal letto, di uscire di casa. Ma bastò quella notte, quella notte insonne, sanguinante dal petto nell'abisso del dolore, che dilagava dalla mente al cuore, e quel dolore sul petto così opprimente da togliere il respiro. Bastò quella notte a togliermi completamente le forze, tanto che mi addormentai in preda allo sfinimento, per poi svegliarmi il giorno successivo privo di ogni segno della stanchezza, della svogliatezza, di quello stesso dolore. Se la sera prima questo era un grande vaso in frantumi, quella mattina ne restavano solo i frammenti più piccoli. Piccoli, sì, ma ancora in grado di tagliare. Bastò quella mattina per farmi capire che possiamo ancora camminare sui cocci sottili, e che certo, fa male, ma non è impossibile. Dopo un po' ci si abitua ai tagli. E così, quella mattina, iniziai a camminare sulle schegge. Non era facile, ma il metodo era semplice: camminare. E poi ancora camminare, e ancora, e ancora.<br><br>Daniele Pezzuoli,<br><i>Il viandante sul mare di sabbia</i>",
@@ -42,7 +42,7 @@ const scenes = {
   dedica: {
     background: '#d6eaff',
     title: '',
-    body: "Quando dico che ti amo, intendo che stai lentamente diventando una parte di me, un capitolo indimenticabile della mia vita, al punto che trovo più che ragionevole, anzi necessario, trasporti nelle mie aspiranti opere. Che tu in queste sia Klara, che sia Sachi, che sia una parte della coscienza stessa del protagonista, non ha importanza. Sei e sarai quella persona a cui un'opera è dedicata tra le righe, a cui un passo in particolare cerca di parlare direttamente, a cui le lettere esprimono la gratitudine.",
+    body: "Quando dico che ti amo, intendo che stai lentamente diventando una parte di me, una parte che negli anni verrà assimilata in modo permanente e irreversibile; un capitolo indimenticabile della mia vita, al punto che trovo più che ragionevole, anzi necessario, trasporti nelle mie aspiranti opere. Che tu in queste ti chiami Klara, Sachi, che tu sia la voce stessa del protagonista in alcuni passi, come quello che hai appena letto, non ha importanza. Sei e sarai quella persona a cui un'opera è dedicata tra le righe e nel modo in cui è scritta, a cui un passo in particolare cerca di parlare direttamente, a cui le lettere esprimono la gratitudine.",
     type: 'choice',
     options: [
       { label: 'Continua', next: 'miglioverde' }
@@ -109,6 +109,27 @@ const scenes = {
       { label: 'Non mi piacciono i thriller e l\'ho trovato prevedibile', correct: false },
       { label: 'Non capisco niente di quello che leggo', correct: true }
     ],
+    next: 'lupodellasteppa'
+  },
+
+  lupodellasteppa: {
+    background: '#C12E26',
+    theme: {
+      font: "'Lora', serif",
+      textColor: '#000000',
+      btnBg: '#000000',
+      btnText: '#ffffff'
+    },
+    icon: { src: 'lupo.png', alt: 'Il lupo della steppa' },
+    title: "Fuori dalla penna non c'è salvezza",
+    bodyHtml: 'Parliamo ora di una delle opere più emblematiche del nostro rapporto e che, con mio grande apprezzamento, hai cercato di comprendere. Anche se, con tutta sincerità, non è che tu ne sia rimasta così entusiasta. Ti ricordi cosa mi hai detto in merito a <i>Il lupo della steppa</i>, di Hermann Hesse?',
+    type: 'quiz',
+    options: [
+      { label: 'Mi ci rivedo tantissimo, mi ha aiutata a capirmi meglio', correct: false },
+      { label: 'È stato pesante, ma ne è valsa la pena', correct: false },
+      { label: "Che coglioni, stava proprio fissato con l'arucaria", correct: true },
+      { label: 'Ogni volta che siamo insieme mi sento nel teatro magico del finale', correct: false }
+    ],
     next: 'dorian'
   },
 
@@ -121,14 +142,83 @@ const scenes = {
       btnText: '#ffffff'
     },
     icon: { src: 'gray.png', alt: 'Il ritratto di Dorian Gray' },
-    title: '',
+    title: 'Fuori dalla penna non c\'è salvezza',
     bodyHtml: '“stavo riguardando le nostre foto e mi sono ritrovata a guardarle con la stessa meraviglia con cui basil hallward contemplava il ritratto di dorian gray appena terminato, con quello stupore quasi incredulo che si prova davanti a qualcosa di così bello da sembrare irreale. ma, a differenza di dorian, la cui bellezza rimane intatta mentre è il ritratto a consumarsi e a riflettere il tempo e le sue colpe, tu sembri diventare ogni giorno più bello.<br>ADORO il fatto che ogni versione di te che conosco non fa che rendere ancora più bella quella che verrà, come se il tempo, invece di portarti via qualcosa, continuasse ad aggiungere meraviglia” (Beatrice)',
     type: 'quiz',
     options: [
       { label: 'Lo stesso discorso vale anche per te', correct: false },
-      { label: 'Questo discorso vale solo per te e non voglio sentire obiezioni', correct: true },
+      { label: 'Taci, sei meravigliosa e non voglio sentire altro', correct: true },
       { label: 'Ti sbagli, sei oggettivamente più bella tu', correct: false },
       { label: 'Hai ragione, sono oggettivamente più bello di te', correct: false }
+    ],
+    next: 'possibiliscenari'
+  },
+
+  possibiliscenari: {
+    background: 'linear-gradient(135deg, #1D0F44, #364A7D)',
+    theme: {
+      font: "'Quicksand', sans-serif",
+      textColor: '#ffffff',
+      btnBg: '#96CFC0',
+      btnText: '#153229',
+      cardBg: '#D96043'
+    },
+    icon: { src: 'possibiliscenari.png', alt: 'Cesare Cremonini, Possibili Scenari' },
+    title: 'Cesare Cremonini, Possibili Scenari',
+    body: 'Adesso basta, passiamo alla musica. Completa i versi di queste canzoni, vediamo se te le ricordi. La prima è facile.',
+    type: 'lyrics',
+    lines: [
+      { text: 'E poi succede' },
+      { blank: 'che ci sentiamo bene' },
+      { text: 'Senza nessun perché' }
+    ],
+    next: 'poetica'
+  },
+
+  poetica: {
+    background: 'linear-gradient(135deg, #1D0F44, #364A7D)',
+    theme: {
+      font: "'Quicksand', sans-serif",
+      textColor: '#ffffff',
+      btnBg: '#96CFC0',
+      btnText: '#153229',
+      cardBg: '#D96043'
+    },
+    // Nessuna nuova immagine indicata, riuso la copertina dell'album.
+    icon: { src: 'possibiliscenari.png', alt: 'Cesare Cremonini, Poetica' },
+    title: 'Cesare Cremonini, Poetica',
+    body: 'Restiamo tra le stesse corde, ancora un po\':',
+    type: 'lyrics',
+    lines: [
+      { text: 'Anche quando poi' },
+      { blank: 'saremo stanchi' },
+      { blank: 'troveremo il modo' },
+      { text: 'Per camminare nel buio' }
+    ],
+    next: 'enjoythesilence'
+  },
+
+  enjoythesilence: {
+    background: '#AB1E2E',
+    theme: {
+      font: "'Quicksand', sans-serif",
+      textColor: '#ffffff',
+      btnBg: '#ffffff',
+      btnText: '#AB1E2E',
+      cardBg: '#000000'
+    },
+    icon: { src: 'violator.png', alt: 'Depeche Mode, Violator' },
+    title: 'Depeche Mode, Enjoy the Silence',
+    body: "Torniamo su note un po' più vecchie.",
+    type: 'lyrics',
+    lines: [
+      { text: "Can't you understand" },
+      { text: 'Oh my little girl' },
+      { blank: 'all I ever wanted' },
+      { text: 'All I ever needed' },
+      { blank: 'is here in my arms' },
+      { text: 'Words are very unnecessary' },
+      { text: 'They can only do harm' }
     ]
   }
 };
@@ -140,7 +230,8 @@ const DEFAULT_THEME = {
   font: "'Quicksand', sans-serif",
   textColor: '#243085',
   btnBg: '#b7c9ff',
-  btnText: '#243085'
+  btnText: '#243085',
+  cardBg: '#ffffff'
 };
 
 function applyTheme(theme) {
@@ -150,6 +241,7 @@ function applyTheme(theme) {
   root.setProperty('--text-color', t.textColor);
   root.setProperty('--btn-bg', t.btnBg);
   root.setProperty('--btn-text', t.btnText);
+  root.setProperty('--card-bg', t.cardBg);
 }
 
 function buildCardContent(container, scene, variant) {
@@ -252,6 +344,73 @@ function buildCardContent(container, scene, variant) {
     container.appendChild(optionsWrap);
   }
 
+  if (scene.type === 'lyrics') {
+    const lyricsWrap = document.createElement('div');
+    lyricsWrap.className = 'lyrics';
+    const blanks = []; // { input, answer }
+
+    scene.lines.forEach(line => {
+      if (line.blank !== undefined) {
+        const input = document.createElement('input');
+        input.type = 'text';
+        input.className = 'lyrics__input';
+        input.placeholder = '···';
+        input.autocomplete = 'off';
+        lyricsWrap.appendChild(input);
+        blanks.push({ input, answer: line.blank });
+      } else {
+        const p = document.createElement('p');
+        p.className = 'lyrics__line';
+        p.textContent = line.text;
+        lyricsWrap.appendChild(p);
+      }
+    });
+
+    container.appendChild(lyricsWrap);
+
+    const optionsWrap = document.createElement('div');
+    optionsWrap.className = 'card__options';
+
+    const submitBtn = document.createElement('button');
+    submitBtn.className = 'option-btn';
+    submitBtn.textContent = 'Indovina';
+
+    submitBtn.addEventListener('animationend', () => {
+      submitBtn.classList.remove('shake');
+    });
+
+    const trySubmit = () => {
+      const allCorrect = blanks.every(b =>
+        b.input.value.trim().toLowerCase() === b.answer.trim().toLowerCase()
+      );
+
+      if (allCorrect) {
+        blanks.forEach(b => { b.input.disabled = true; });
+        submitBtn.disabled = true;
+        submitBtn.classList.add('is-correct');
+        submitBtn.textContent = 'Esatto!';
+
+        if (scene.next) {
+          setTimeout(() => renderScene(scene.next), 700);
+        }
+      } else {
+        submitBtn.classList.remove('shake');
+        void submitBtn.offsetWidth; // reflow, per poter far ripartire l'animazione
+        submitBtn.classList.add('shake');
+      }
+    };
+
+    submitBtn.addEventListener('click', trySubmit);
+    blanks.forEach(b => {
+      b.input.addEventListener('keydown', e => {
+        if (e.key === 'Enter') trySubmit();
+      });
+    });
+
+    optionsWrap.appendChild(submitBtn);
+    container.appendChild(optionsWrap);
+  }
+
   if (scene.type === 'letter') {
     const optionsWrap = document.createElement('div');
     optionsWrap.className = 'card__options';
@@ -274,7 +433,7 @@ function renderScene(sceneId, variant) {
   const scene = scenes[sceneId];
   if (!scene) return;
 
-  document.body.style.backgroundColor = scene.background;
+  document.body.style.background = scene.background;
   applyTheme(scene.theme);
 
   // Primo caricamento: nessuna animazione, si costruisce e basta.
