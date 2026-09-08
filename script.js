@@ -59,7 +59,7 @@ const scenes = {
     },
     icon: { src: 'miglioverde.png', alt: 'Il Miglio Verde' },
     title: "Fuori dalla penna non c'è salvezza",
-    body: 'Già che ci siamo, parliamo di libri. Parto subito con una domanda bruciapelo: una volta ti ho detto che se tu fossi un libro, saresti Il miglio verde, di Stephen King. Perché?',
+    bodyHtml: 'Già che ci siamo, parliamo di libri. Parto subito con una domanda bruciapelo: una volta ti ho detto che se tu fossi un libro, saresti <i>Il miglio verde</i>, di Stephen King. Perché?',
     type: 'quiz',
     options: [
       { label: 'Perché io e te avremo un epilogo drammatico, come il libro', correct: false },
@@ -87,6 +87,48 @@ const scenes = {
       { label: '333, come piace a Dante', correct: false },
       { label: '64, come in Minecraft', correct: false },
       { label: '666, perché sei un diavoletto', correct: false }
+    ],
+    next: 'ladro'
+  },
+
+  ladro: {
+    background: '#C12E26',
+    theme: {
+      font: "'Lora', serif",
+      textColor: '#000000',
+      btnBg: '#000000',
+      btnText: '#ffffff'
+    },
+    icon: { src: 'ladro.png', alt: 'Il ladro di anime' },
+    title: 'Fuori dalla penna non c\'è salvezza',
+    bodyHtml: 'Perché hai prima amato e poi odiato così tanto <i>Il ladro di anime</i>, di Sebastian Fitzek?',
+    type: 'quiz',
+    options: [
+      { label: 'La scrittura era ottima all\'inizio, ma poi si è appesantito', correct: false },
+      { label: 'La trama era promettente, ma mi ha delusa alla fine', correct: false },
+      { label: 'Non mi piacciono i thriller e l\'ho trovato prevedibile', correct: false },
+      { label: 'Non capisco niente di quello che leggo', correct: true }
+    ],
+    next: 'dorian'
+  },
+
+  dorian: {
+    background: '#C12E26',
+    theme: {
+      font: "'Lora', serif",
+      textColor: '#000000',
+      btnBg: '#000000',
+      btnText: '#ffffff'
+    },
+    icon: { src: 'gray.png', alt: 'Il ritratto di Dorian Gray' },
+    title: '',
+    bodyHtml: '“stavo riguardando le nostre foto e mi sono ritrovata a guardarle con la stessa meraviglia con cui basil hallward contemplava il ritratto di dorian gray appena terminato, con quello stupore quasi incredulo che si prova davanti a qualcosa di così bello da sembrare irreale. ma, a differenza di dorian, la cui bellezza rimane intatta mentre è il ritratto a consumarsi e a riflettere il tempo e le sue colpe, tu sembri diventare ogni giorno più bello.<br>ADORO il fatto che ogni versione di te che conosco non fa che rendere ancora più bella quella che verrà, come se il tempo, invece di portarti via qualcosa, continuasse ad aggiungere meraviglia” (Beatrice)',
+    type: 'quiz',
+    options: [
+      { label: 'Lo stesso discorso vale anche per te', correct: false },
+      { label: 'Questo discorso vale solo per te e non voglio sentire obiezioni', correct: true },
+      { label: 'Ti sbagli, sei oggettivamente più bella tu', correct: false },
+      { label: 'Hai ragione, sono oggettivamente più bello di te', correct: false }
     ]
   }
 };
