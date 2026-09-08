@@ -219,6 +219,33 @@ const scenes = {
       { blank: 'is here in my arms' },
       { text: 'Words are very unnecessary' },
       { text: 'They can only do harm' }
+    ],
+    next: 'ridere'
+  },
+
+  ridere: {
+    background: '#FE5905',
+    theme: {
+      font: "'Quicksand', sans-serif",
+      textColor: '#000000',
+      btnBg: '#F5A00A',
+      btnText: '#000000',
+      cardBg: '#ECD6C8'
+    },
+    icon: { src: 'hype.png', alt: 'Pinguini Tattici Nucleari, Ridere' },
+    title: 'Pinguini Tattici Nucleari, Ridere',
+    body: 'Vediamo se penserai a me quando ci lasceremo. Io a te, sicuro.',
+    type: 'lyrics',
+    lines: [
+      { text: 'Però tu fammi una promessa' },
+      { text: 'Che un giorno, quando sarai persa' },
+      { blank: 'ripenserai ogni tanto a cosa siamo stati noi' },
+      { blank: 'alle giornate al mare, a tutte le mie pare' },
+      { text: 'Alle cucine che non abbiam potuto comprare' },
+      { text: "Lo shampoo all'albicocca," },
+      { blank: 'i tuoi capelli in bocca' },
+      { text: "Alla tua testa dura, all'ansia alla paura" },
+      { text: 'Giuro che un po\' mi fa ridere' }
     ]
   }
 };
@@ -379,9 +406,11 @@ function buildCardContent(container, scene, variant) {
       submitBtn.classList.remove('shake');
     });
 
+    const normalize = s => s.trim().toLowerCase().replace(/,/g, '').replace(/\s+/g, ' ');
+
     const trySubmit = () => {
       const allCorrect = blanks.every(b =>
-        b.input.value.trim().toLowerCase() === b.answer.trim().toLowerCase()
+        normalize(b.input.value) === normalize(b.answer)
       );
 
       if (allCorrect) {
