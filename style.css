@@ -1,4 +1,5 @@
 :root {
+  --font-family: 'Quicksand', sans-serif;
   --text-color: #243085;
   --btn-bg: #b7c9ff;
   --btn-text: #243085;
@@ -14,10 +15,10 @@ html, body {
 }
 
 body {
-  font-family: 'Quicksand', sans-serif;
+  font-family: var(--font-family);
   color: var(--text-color);
   background-color: #d6eaff;
-  transition: background-color 0.4s ease;
+  transition: background-color 0.4s ease, color 0.4s ease;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -33,17 +34,30 @@ body {
   max-width: 380px;
   width: 100%;
   text-align: center;
+  overflow: hidden;
+  transition: height 0.35s ease;
 }
 
 .card__title {
+  font-family: var(--font-family);
   font-size: 1.3rem;
   font-weight: 700;
   color: var(--text-color);
   margin: 0 0 18px;
   line-height: 1.35;
+  transition: opacity 0.3s ease;
+}
+
+.card__icon {
+  display: block;
+  width: min(120px, 35vw);
+  height: auto;
+  margin: 0 auto 18px;
+  transition: opacity 0.3s ease;
 }
 
 .card__body {
+  font-family: var(--font-family);
   font-size: 1rem;
   font-weight: 500;
   color: var(--text-color);
@@ -58,7 +72,7 @@ body {
 }
 
 .option-btn {
-  font-family: 'Quicksand', sans-serif;
+  font-family: var(--font-family);
   font-weight: 700;
   font-size: 1rem;
   color: var(--btn-text);
@@ -77,6 +91,20 @@ body {
 .option-btn.is-pressed {
   background-color: var(--btn-text);
   color: var(--btn-bg);
+}
+
+.option-btn:disabled {
+  cursor: default;
+}
+
+.option-btn.is-correct {
+  background-color: #b7ffc1;
+  color: #000000;
+}
+
+.option-btn.is-incorrect {
+  background-color: #ffb7b7;
+  color: #000000;
 }
 
 .overlay {
