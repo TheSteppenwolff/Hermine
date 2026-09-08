@@ -13,9 +13,10 @@ const scenes = {
       { label: 'Non mi va', next: 'invito', variant: 'decline' }
     ]
   },
+
   invito: {
     background: '#d6eaff',
-    // Nessun titolo qui: sparisce dopo Va bene/Non mi va e torna nella prossima scena.
+    // Nessun titolo qui: sparisce dopo Va bene/Non va e torna nella prossima scena.
     title: '',
     variants: {
       accept: 'Questa piccola esperienza sarà un viaggio che cercherà di congiungere passato e futuro. Ci sarà musica, ci saranno date da ricordare, battute. Andiamo?',
@@ -26,6 +27,7 @@ const scenes = {
       { label: 'Andiamo', next: 'posta' }
     ]
   },
+
   posta: {
     background: '#d6eaff',
     title: "C'è posta per te",
@@ -36,6 +38,7 @@ const scenes = {
     letterText: "A lungo ho pensato che le più grandi disdette delle nostre vite potessero abbatterci davvero per giorni, mesi interi. Di lasciarci incapaci di alzarsi dal letto, di uscire di casa. Ma bastò quella notte, quella notte insonne, sanguinante dal petto nell'abisso del dolore, che dilagava dalla mente al cuore, e quel dolore sul petto così opprimente da togliere il respiro. Bastò quella notte a togliermi completamente le forze, tanto che mi addormentai in preda allo sfinimento, per poi svegliarmi il giorno successivo privo di ogni segno della stanchezza, della svogliatezza, di quello stesso dolore. Se la sera prima questo era un grande vaso in frantumi, quella mattina ne restavano solo i frammenti più piccoli. Piccoli, sì, ma ancora in grado di tagliare. Bastò quella mattina per farmi capire che possiamo ancora camminare sui cocci sottili, e che certo, fa male, ma non è impossibile. Dopo un po' ci si abitua ai tagli. E così, quella mattina, iniziai a camminare sulle schegge. Non era facile, ma il metodo era semplice: camminare. E poi ancora camminare, e ancora, e ancora.<br><br>Daniele Pezzuoli,<br><i>Il viandante sul mare di sabbia</i>",
     next: 'dedica'
   },
+
   dedica: {
     background: '#d6eaff',
     title: '',
@@ -45,6 +48,7 @@ const scenes = {
       { label: 'Continua', next: 'miglioverde' }
     ]
   },
+
   miglioverde: {
     background: '#C12E26',
     theme: {
@@ -62,6 +66,27 @@ const scenes = {
       { label: 'Perché tra noi si frappongono troppe ingiustizie che vanno punite', correct: false },
       { label: 'Perché il nostro viaggio insieme sembra lungo, ma nel mentre scalda il cuore', correct: true },
       { label: 'Perché il topolino del carcere è uno dei protagonisti, e tu sei la mia topa', correct: false }
+    ],
+    next: 'alice'
+  },
+
+  alice: {
+    background: '#C12E26',
+    theme: {
+      font: "'Lora', serif",
+      textColor: '#000000',
+      btnBg: '#000000',
+      btnText: '#ffffff'
+    },
+    icon: { src: 'alice.png', alt: 'Alice nel Paese delle Meraviglie' },
+    title: 'Fuori dalla penna non c\'è salvezza',
+    bodyHtml: 'Quando, per il tuo compleanno, ti ho regalato il volume di <i>Alice nel Paese delle Meraviglie</i> e <i>Attraverso lo specchio</i>, a che pagina si trovavano le due lettere che ti ho scritto?',
+    type: 'quiz',
+    options: [
+      { label: '118, perché sei diventata grande', correct: true },
+      { label: '333, come piace a Dante', correct: false },
+      { label: '64, come in Minecraft', correct: false },
+      { label: '666, perché sei un diavoletto', correct: false }
     ]
   }
 };
@@ -95,6 +120,7 @@ function buildCardContent(container, scene, variant) {
     icon.alt = scene.icon.alt || '';
     icon.style.opacity = '0';
     container.appendChild(icon);
+
     requestAnimationFrame(() => {
       requestAnimationFrame(() => {
         icon.style.opacity = '1';
@@ -108,6 +134,7 @@ function buildCardContent(container, scene, variant) {
     title.textContent = scene.title;
     title.style.opacity = '0';
     container.appendChild(title);
+
     // Doppio rAF: garantisce che il browser registri opacity:0 prima di
     // passare a 1, altrimenti la transizione a volte viene "saltata".
     requestAnimationFrame(() => {
@@ -119,9 +146,15 @@ function buildCardContent(container, scene, variant) {
 
   const body = document.createElement('p');
   body.className = 'card__body';
-  body.textContent = (scene.variants && variant && scene.variants[variant])
-    ? scene.variants[variant]
-    : scene.body;
+
+  if (scene.bodyHtml) {
+    body.innerHTML = scene.bodyHtml;
+  } else {
+    body.textContent = (scene.variants && variant && scene.variants[variant])
+      ? scene.variants[variant]
+      : scene.body;
+  }
+
   container.appendChild(body);
 
   if (scene.type === 'choice') {
@@ -132,12 +165,15 @@ function buildCardContent(container, scene, variant) {
       const btn = document.createElement('button');
       btn.className = 'option-btn';
       btn.textContent = option.label;
+
       btn.addEventListener('click', () => {
         btn.classList.toggle('is-pressed');
+
         if (option.next) {
           setTimeout(() => renderScene(option.next, option.variant), 300);
         }
       });
+
       optionsWrap.appendChild(btn);
     });
 
@@ -152,13 +188,22 @@ function buildCardContent(container, scene, variant) {
       const btn = document.createElement('button');
       btn.className = 'option-btn';
       btn.textContent = option.label;
+
       btn.addEventListener('click', () => {
         const allBtns = optionsWrap.querySelectorAll('.option-btn');
+
         allBtns.forEach((b, i) => {
           b.disabled = true;
-          b.classList.add(scene.options[i].correct ? 'is-correct' : 'is-incorrect');
+          b.classList.add(
+            scene.options[i].correct ? 'is-correct' : 'is-incorrect'
+          );
         });
+
+        if (scene.next) {
+          setTimeout(() => renderScene(scene.next), 700);
+        }
       });
+
       optionsWrap.appendChild(btn);
     });
 
@@ -172,12 +217,13 @@ function buildCardContent(container, scene, variant) {
     const openBtn = document.createElement('button');
     openBtn.className = 'option-btn';
     openBtn.textContent = scene.buttonLabel || 'Leggi';
+
     openBtn.addEventListener('click', () => {
       openBtn.classList.toggle('is-pressed');
       openLetter(scene);
     });
-    optionsWrap.appendChild(openBtn);
 
+    optionsWrap.appendChild(openBtn);
     container.appendChild(optionsWrap);
   }
 }
@@ -207,6 +253,7 @@ function renderScene(sceneId, variant) {
     buildCardContent(cardEl, scene, variant);
 
     const endHeight = cardEl.scrollHeight;
+
     requestAnimationFrame(() => {
       cardEl.style.height = endHeight + 'px';
     });
@@ -221,10 +268,12 @@ function renderScene(sceneId, variant) {
 
   const oldTitle = cardEl.querySelector('.card__title');
   const oldIcon = cardEl.querySelector('.card__icon');
+
   if (oldTitle || oldIcon) {
     // Titolo/icona vecchi spariscono prima di ricostruire il resto sotto.
     if (oldTitle) oldTitle.style.opacity = '0';
     if (oldIcon) oldIcon.style.opacity = '0';
+
     setTimeout(swapContent, 250);
   } else {
     swapContent();
@@ -246,12 +295,15 @@ function openLetter(scene) {
   const continueBtn = document.createElement('button');
   continueBtn.className = 'option-btn';
   continueBtn.textContent = 'Continua';
+
   continueBtn.addEventListener('click', () => {
     overlay.remove();
+
     if (scene.next) {
       renderScene(scene.next);
     }
   });
+
   box.appendChild(continueBtn);
 
   overlay.appendChild(box);
