@@ -246,6 +246,84 @@ const scenes = {
       { blank: 'i tuoi capelli in bocca' },
       { text: "Alla tua testa dura, all'ansia alla paura" },
       { text: 'Giuro che un po\' mi fa ridere' }
+    ],
+    next: 'grattacieli'
+  },
+
+  grattacieli: {
+    background: '#F2F0ED',
+    theme: {
+      font: "'Quicksand', sans-serif",
+      textColor: '#000000',
+      btnBg: '#000000',
+      btnText: '#ffffff',
+      cardBg: '#ffffff'
+    },
+    icon: { src: 'indi.png', alt: 'Gazzelle, Grattacieli meteoriti gli angeli' },
+    title: 'Gazzelle, Grattacieli meteoriti gli angeli',
+    body: '',
+    type: 'lyrics',
+    lines: [
+      { text: 'Ma fai crollare i grattacieli, i meteoriti, gli angeli, i satelliti' },
+      { blank: 'Squarci in due la notte, guardami' },
+      { text: 'Che sono sotto casa tua che scalpito' },
+      { blank: 'E ho una canzone in testa che non so cantarti' },
+      { text: 'E fai tremare i pavimenti, i lampadari, gli alberi, i semafori' },
+      { text: 'Verdi come prati, guardami' },
+      { text: 'Che sono sotto casa tua che partirò' },
+      { blank: 'E ho una canzone in testa che non so cantarti' },
+      { text: 'Ma ci proverò' }
+    ],
+    next: 'coprimi'
+  },
+
+  coprimi: {
+    background: '#ffffff',
+    theme: {
+      font: "'Quicksand', sans-serif",
+      textColor: '#ffffff',
+      btnBg: '#C13B49',
+      btnText: '#ffffff',
+      cardBg: '#4E74A9'
+    },
+    icon: { src: 'post.png', alt: 'Gazzelle, Post Punk' },
+    title: 'Gazzelle, Coprimi le spalle',
+    body: '',
+    type: 'lyrics',
+    lines: [
+      { text: 'Coprimi le spalle che fuori fa freddo' },
+      { blank: 'Che domani mi guardo allo specchio e sono vecchio' },
+      { text: 'È che ho scoperto che le cose belle appassiscono' },
+      { blank: 'E che i sogni dentro ai cassetti marciscono' },
+      { text: 'E che la gente non crede mai troppo' },
+      { text: 'E le parole trovano un tempo che possono' },
+      { text: 'Che non puoi morire due volte di seguito' },
+      { blank: 'E che se fuori piove, io dentro nevico' }
+    ],
+    next: 'pensaveloce'
+  },
+
+  pensaveloce: {
+    background: '#d6eaff',
+    icon: { src: 'pensaveloce.png', alt: 'Ti amo' },
+    title: 'Ti amo',
+    body: 'Pensa veloce',
+    type: 'quiz',
+    options: [
+      { label: 'Ti amo di più io', correct: false },
+      { label: 'Anche io, ma tu mi ami di più', correct: true }
+    ],
+    next: 'dedica2'
+  },
+
+  dedica2: {
+    background: '#d6eaff',
+    title: '',
+    // Testo da inserire: ci pensa Daniele.
+    body: 'Inserisci qui il testo.',
+    type: 'choice',
+    options: [
+      { label: 'Continua', next: null }
     ]
   }
 };
